@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="A simple, private checklist that stays in your browser.">
+  <title>Small Wins · A simple checklist</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main>
+    <header><span class="eyebrow">ONE THING AT A TIME</span><h1>Small wins.</h1><p>A little space for what you want to get done.</p></header>
+    <section class="workspace" aria-label="Your checklist">
+      <div class="section-heading"><h2>Today’s list</h2><span id="progress-text" role="status" aria-live="polite">0 of 0 complete</span></div>
+      <progress id="progress" max="100" value="0" aria-label="Task completion"></progress>
+      <form id="task-form"><label for="task-input">What’s next?</label><div class="entry"><input id="task-input" name="task" maxlength="160" placeholder="Add one small thing…" autocomplete="off" required><button type="submit">Add task <span aria-hidden="true">↗</span></button></div></form>
+      <p id="message" role="status" aria-live="polite"></p>
+      <ul id="task-list" aria-label="Tasks"></ul>
+      <p id="empty-state">Start with one thing. You can build from there.</p>
+      <footer class="list-footer"><span>Saved in this browser</span><button id="clear-completed" type="button" disabled>Clear completed</button></footer>
+    </section>
+    <p class="footnote">Your list stays with you. No accounts, no tracking.</p>
+  </main>
+  <script type="module" src="./app.mjs"></script>
+</body>
+</html>
