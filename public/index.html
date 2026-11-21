@@ -13,7 +13,7 @@
     <section class="workspace" aria-label="Your checklist">
       <div class="section-heading"><h2>Today’s list</h2><span id="progress-text" role="status" aria-live="polite">0 of 0 complete</span></div>
       <progress id="progress" max="100" value="0" aria-label="Task completion"></progress>
-      <form id="task-form"><label for="task-input">What’s next?</label><div class="entry"><input id="task-input" name="task" maxlength="160" placeholder="Add one small thing…" autocomplete="off" required><button type="submit">Add task <span aria-hidden="true">↗</span></button></div></form>
+      <form id="task-form"><label for="task-input">What’s next?</label><div class="entry"><input id="task-input" name="task" aria-describedby="message" maxlength="160" placeholder="Add one small thing…" autocomplete="off" required><button type="submit">Add task <span aria-hidden="true">↗</span></button></div></form>
       <p id="message" role="status" aria-live="polite"></p>
       <ul id="task-list" aria-label="Tasks"></ul>
       <p id="empty-state">Start with one thing. You can build from there.</p>

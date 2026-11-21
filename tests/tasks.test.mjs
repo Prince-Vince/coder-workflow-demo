@@ -1,6 +1,20 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { addTask, toggleTask, clearCompleted, getProgress, restoreTasks } from '../public/tasks.mjs';
+import { addTask, toggleTask, clearCompleted, getProgress, restoreTasks, createTaskId } from '../public/tasks.mjs';
+
+test('task creation also works when secure-context UUID generation is unavailable', () => {
+  assert.equal(createTaskId(() => 'secure-id'), 'secure-id');
+  const id = createTaskId(null);
+  assert.equal(addTask([], 'HTTP preview task', id)[0].id, id);
+  assert.notEqual(createTaskId(null), id);
+});
+
+test('validation accepts the text boundary and rejects invalid persisted boundaries', () => {
+  assert.equal(addTask([], 'x'.repeat(160), 'a')[0].text.length, 160);
+  assert.throws(() => addTask([], 'Read', '   '), RangeError);
+  assert.deepEqual(restoreTasks(JSON.stringify([{id:'a',text:'x'.repeat(161),completed:false}])), []);
+  assert.equal(toggleTask([{id:'a',text:'Read',completed:true}], 'a')[0].completed, false);
+});
 
 test('add trims text, preserves source and assigns an unchecked ID', () => {
   const source = Object.freeze([]);

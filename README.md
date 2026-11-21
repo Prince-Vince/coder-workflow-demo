@@ -17,3 +17,5 @@ Open http://localhost:8080. The app stores tasks in this browser only. It has no
 GitHub Actions checks tests and the static build on pull requests. The Pages workflow deploys the verified main branch and can also be triggered manually.
 
 Acceptance criteria: [docs/acceptance.md](docs/acceptance.md).
+
+Verification and review scope: [docs/verification.md](docs/verification.md).
